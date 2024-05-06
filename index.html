@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Design-Me</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Annapurna+SIL:wght@400;700&family=Bebas+Neue&family=Bungee&family=Lilita+One&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:wght@100;200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Saira+Stencil+One&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        * {
+            font-family: 'Poppins';
+            text-decoration: none;
+        }
+        html{scroll-behavior: smooth;}
+        body.stopScrolling{
+            scroll-snap-type: none;
+        }
+/* Global Css Start */
+        .text-WH {color: #fff;}
+/* Link Colors  */
+        .text-color{color: #fff;}
+        .text-hover-color:hover {color: #ff006a;}
+        .text-link-bg{background: #3837372c;}
+        .hover-bg-color:hover {background: #050505;}
+
+/* Transition  */
+        .transition {transition: all 0.4s ease;}
+/* Background Colors */
+        .bg-dry-blue {background-color: #a6add3;}
+        .bg-dry-yellow {background-color: #f4ff96;}
+        .bg-dry-orange {background-color: #ffd196;}
+        .bg-dry-purple {background-color: #ff96ff;}
+        .bg-dry-red {background-color: #ff9696;}
+        .bg-dry-green {background-color: #96ff96;}
+
+/* Form Inputs Css */
+        /* Chrome,Safari, Edge, Opera ,Firefox*/
+        input[type=number] {-moz-appearance: textfield;}
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+/* Form Inputs Css */
+/* Blacklayer */
+        .blacklayer{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #000000bd;
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            top: 0;
+            left: 0;
+            transition: all 0.4s ease;
+        }
+        .blacklayer.active{
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+/* Blacklayer */
+/* Global Css End */
+
+/* Desk-view-Header start */
+        header {
+            position: fixed;
+            border-bottom: 2px solid #ff006a;
+            background: #1a1a1a;
+            z-index: 100;
+            top: 0;
+            left: 0;
+        }
+        .web-nav-links .nav-link {
+            font-size: 14px;
+            color: #3f3e3e;
+            margin: 0 10px;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        .web-nav-links .nav-link:hover {
+            color: #ff006a;
+            transition: all 0.4s ease;
+        }
+        .web-nav-links .nav-link.active {color: #ff006a;}
+        .navigation.hide {
+            top: -80px;
+            transition: all 0.4s ease;
+        }
+/* Desk-view-Header End */
+/* Mobile Sidebar Satrt */
+        .mobileSidebar{
+            position: fixed;
+            z-index: 99999;
+            top: 0;
+            left: -100%;
+            max-width: 300px;
+            height: 100vh;
+            background: #000000;
+            transition: all 0.4s ease;
+        }
+        .mobileSidebar.mobileSidebarShow {left: 0; transition: all 0.4s ease;}
+        .mobileSidebarClose {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 25px;
+            padding: 0;
+            animation: crossRotate 8s ease infinite;
+        }
+        @keyframes crossRotate {
+            /* 0%{transform: rotate(-90deg);} */
+            100%{transform: rotate(360deg);}
+        }
+        .mobileSidebar .navbar-links .nav-link.active{color: #ff006a;}
+/* Mobile Sidebar End */
+/* Footer Start  */ 
+        Footer {
+            border-top: 2px solid #ff006a;
+            background: #ff0045;
+        }
+        Footer a {
+            color: #1a1a1a;
+            font-size: 14px;
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .custom-form input,
+        .custom-form textarea{
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #000;
+            font-size: 12px;
+            width: 100%;
+            outline: none;
+        }
+        .custom-form button{
+            border: none;
+            padding: 10px;
+            width: 100%;
+            max-width: 150px;
+            background: #000;
+            color: #fff;
+            text-transform: uppercase;
+        }
+/* Footer Start  */
+        main {position: relative;}
+        section {
+            height: 100vh;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+       
+
+
+    </style>
+</head>
+
+<body>
+    <div class="blacklayer d-block d-lg-none"></div>
+    <!-- Header Start  -->
+    <header class="d-flex align-items-center justify-content-center w-100 navigation transition">
+        <nav class="navbar navbar-expand-lg w-100 p-2 p-lg-0 ">
+            <div class="container">
+                <a class="web-nav-logo text-decoration-none text-pink fs-4 text-color" href="https://design-me.netlify.app/">Design-Me</a>
+                <div class="web-nav-links d-none d-lg-flex  d-flex align-items-center justify-content-between">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class=" nav-link active" aria-current="page" href="#home">Home</a></li>
+                        <li class="nav-item"><a class=" nav-link" href="#about-us">About Us</a></li>
+                        <li class="nav-item"><a class=" nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class=" nav-link" href="#gallery">Gallery</a></li>
+                        <li class="nav-item"><a class=" nav-link" href="#testimonial">testimonial</a></li>
+                        <li class="nav-item"><a class=" nav-link" href="#contact-us">Contact Us</a></li>
+                    </ul>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#gitInTouch"
+                        class="px-4 py-3 border-0 transition text-color text-hover-color bg-dark ms-auto">Get In
+                        Touch
+                    </button>
+                </div>
+                <button class=" web-nav-toggle transition b-block d-lg-none ms-auto border-0 bg-transparent text-color text-hover-color fs-3">
+                    <l class="bi bi-list"> </l>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <!-- Header END  -->
+    <!-- Mobile Header END  -->
+    <div class="mobileSidebar mobileNavigation d-block d-lg-none">
+        <div class="row">
+            <div class="mobileSidebarClose">
+                <i class="bi bi-x-lg text-WH fs-4 text-hover-color transition"></i>
+            </div>
+            <div class="col-12 ">
+                <ul class="list-unstyled p-0 navbar-links ">
+                    <li class="active text-color hover-text-color  p-0"><a class="nav-link p-3 fs-6 text-uppercase text-WH" href="#">Logo</a></li>
+                    <li class="nav-item text-color text-hover-color text-link-bg hover-bg-color p-0 border-bottom border-dark border-1 "><a class="nav-link p-3 fs-6 text-uppercase text-WH" href="#home">Home</a></li>
+                    <li class="nav-item text-color text-hover-color text-link-bg hover-bg-color p-0 border-bottom border-dark border-1"><a class="nav-link p-3 fs-6 text-uppercase text-WH" href="#about-us">About Us</a></li>
+                    <li class="nav-item text-color text-hover-color text-link-bg hover-bg-color p-0 border-bottom border-dark border-1"><a class="nav-link p-3 fs-6 text-uppercase text-WH" href="#services">Services</a></li>
+                    <li class="nav-item text-color text-hover-color text-link-bg hover-bg-color p-0 border-bottom border-dark border-1"><a class="nav-link p-3 fs-6 text-uppercase text-WH" href="#gallery">Gallery</a></li>
+                    <li class="nav-item text-color text-hover-color text-link-bg hover-bg-color p-0 border-bottom border-dark border-1"><a class="nav-link p-3 fs-6 text-uppercase text-WH" href="#testimonial">testimonial</a></li>
+                    <li class="nav-item text-color text-hover-color text-link-bg hover-bg-color p-0 border-bottom border-dark border-1"><a class="nav-link p-3 fs-6 text-uppercase text-WH" href="#contact-us">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-12">
+                <ul class="list-unstyled d-flex gap-5 px-3">
+                    <li><a href="#" class="text-decoration-none text-WH fs-5 hover-text-color text-WH transition"><i
+                            class="bi bi-youtube"></i>
+                    </a></li>
+                    <li><a href="#" class="text-decoration-none text-WH fs-5 hover-text-color text-WH transition"><i
+                            class="bi bi-facebook"></i>
+                    </a></li>
+                    <li><a href="#" class="text-decoration-none text-WH fs-5 hover-text-color text-WH transition"><i
+                            class="bi bi-instagram"></i>
+                    </a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Mobile Header END  -->
+    <!-- Content Start  -->
+    <main>
+        <section class=" bg-dry-blue" id="home"><h1 class="display-1">Banner</h1></section>
+        <section class=" bg-dry-yellow" id="about-us"><h1 class="display-1">About Us</h1></section>
+        <section class=" bg-dry-orange" id="services"><h1 class="display-1">Services</h1></section>
+        <section class=" bg-dry-purple" id="gallery"><h1 class="display-1">Gallery</h1></section>
+        <section class=" bg-dry-green" id="testimonial"><h1 class="display-1">Testimonial</h1></section>
+        <section class=" bg-dry-red" id="contact-us"><h1 class="display-1">Contact Us</h1></section>
+    </main>
+    <!-- Content Start  -->
+    <!-- Footer Start  -->
+    <Footer class="pt-5 overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <a href="#" class="text-decoration-none fs-2 d-block">Design-Me</a>
+                    <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Animi, quae quia sed illo dolorum necessitatibus nihil voluptate molestiae
+                        maxime reiciendis error alias asperiores numquam eveniet adipisci voluptatum delectus id
+                        ad.</small>
+                </div>
+                <div class="py-3 py-lg-0 py-md-3 col-12 col-lg-3 col-md-6 col-sm-6">
+                    <h5>Address</h5>
+                    <ul class="list-unstyled p-0">
+                        <li><a href="#" class="text-decoration-none text-hover-color  transition" target="_blank">
+                                <span class="me-2"><i class="bi bi-envelope"></i></span>
+                                info@gmail.com
+                            </a></li>
+                        <li><a href="#" class="text-decoration-none text-hover-color  transition" target="_blank">
+                                <span class="me-2"><i class="bi bi-geo-alt"></i></span>
+                                Lorem ipsum dolor sit amet consectetur
+                            </a></li>
+                        <li><a href="#" class="text-decoration-none text-hover-color  transition" target="_blank">
+                                <span class="me-2"><i class="bi bi-telephone"></i></span>
+                                +91 000-000-0000
+                            </a></li>
+                    </ul>
+                    <ul class="list-unstyled d-flex gap-3">
+                        <li><a href="#" class="text-decoration-none fs-6 text-hover-color  transition"><i
+                                    class="bi bi-youtube"></i></a></li>
+                        <li><a href="#" class="text-decoration-none fs-6 text-hover-color  transition"><i
+                                    class="bi bi-facebook"></i></a></li>
+                        <li><a href="#" class="text-decoration-none fs-6 text-hover-color  transition"><i
+                                    class="bi bi-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <div class=" py-3 py-lg-0 py-md-3 col-lg-2 col-md-6 col-sm-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled p-0">
+                        <li><a href="#" class="text-decoration-none text-hover-color  transition">Home</a></li>
+                        <li><a href="#" class="text-decoration-none text-hover-color  transition">Services</a></li>
+                        <li><a href="#" class="text-decoration-none text-hover-color  transition">About Us</a></li>
+                        <li><a href="#" class="text-decoration-none text-hover-color  transition">Gallery</a></li>
+                        <li><a href="#" class="text-decoration-none text-hover-color  transition">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-3 col-md-8">
+                    <h5>Contact Us</h5>
+                    <form class="custom-form">
+                        <input type="text" placeholder="Name *">
+                        <input type="email" placeholder="Email *">
+                        <input type="number" placeholder="Phone No. *">
+                        <textarea placeholder="Message *"></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 text-center py-2  border-top border-white">
+               <a href="https://design-me.netlify.app/" target="_blank" rel="noopener noreferrer"></a> <small>Design-me</small>
+            </div>
+        </div>
+    </Footer>
+
+    <!-- Footer END  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+
+    // on scroll highlight link 
+        const sections = document.querySelectorAll("section[id]");
+        window.addEventListener("scroll", navHighlighter);
+        function navHighlighter() {
+            let scrollY = window.pageYOffset;
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 50;
+                sectionId = current.getAttribute("id");
+                if (
+                    scrollY > sectionTop &&
+                    scrollY <= sectionTop + sectionHeight
+                ) {
+                    document.querySelector(".navigation a[href*=" + sectionId + "]").classList.add("active");
+                    document.querySelector(".mobileNavigation a[href*=" + sectionId + "]").classList.add("active");
+
+                } else {
+                    document.querySelector(".navigation a[href*=" + sectionId + "]").classList.remove("active");
+                    document.querySelector(".mobileNavigation a[href*=" + sectionId + "]").classList.remove("active");
+
+                }
+            });
+        }
+// on scroll highlight link 
+// on scroll header hide 
+        var header = document.querySelector(".navigation");
+        var navbarHeight = header.offsetHeight;
+        var lastScrollTop = 0;
+        window.onscroll = function () { scrollHide() };
+        function scrollHide() {
+            var st = window.pageYOffset || document.documentElement.scrollTop;
+            // console.log(st);
+            if (st > lastScrollTop) {
+                header.classList.add('hide');
+            } else {
+                header.classList.remove('hide');
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        }
+const screenBody=document.querySelector('body');
+const sidebarOpenBtn=document.querySelector('.web-nav-toggle');
+const sidebarBox=document.querySelector('.mobileSidebar');
+const sidebarCloseBtn=document.querySelector('.mobileSidebarClose');
+const blacklayer=document.querySelector('.blacklayer')
+
+sidebarOpenBtn.addEventListener("click",()=>{
+    sidebarBox.classList.toggle('mobileSidebarShow');
+    blacklayer.classList.toggle('active');
+    screenBody.classList.toggle('stopScrolling');
+})
+sidebarCloseBtn.addEventListener("click",()=>{
+    sidebarBox.classList.remove('mobileSidebarShow');
+    blacklayer.classList.remove('active');
+    screenBody.classList.remove('stopScrolling');
+
+})
+
+const MainNavLink = document.querySelectorAll('.navbar-links .nav-item .nav-link');
+MainNavLink.forEach(mainLink=>{
+    mainLink.addEventListener("click", ()=>{
+    sidebarBox.classList.remove('mobileSidebarShow');
+    blacklayer.classList.remove('active');
+    screenBody.classList.remove('stopScrolling');
+
+    })
+})
+ 
+    </script>
+</body>
+
+</html>
